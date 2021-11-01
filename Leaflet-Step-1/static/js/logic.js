@@ -25,6 +25,21 @@ function createMap(earthquakes) {
     });
     // Create a layer control, and pass it baseMaps and overlayMaps
     L.control.layers(baseMaps, overlayMaps).addTo(myMap);
+    // Create a custom legend
+
+    colorlist = ["yellow", "greenyellow", "green", "darkgreen", "darkslategrey"];
+    var legend = L.control({position: "bottomright"});
+    legend.onAdd = function(myMap){
+        var div = L.DomUtil.create("div", "info legend"),
+        labels = ["<strong>Depths</strong>"],
+        categories = ["Depth < 10", "Depth 11-30", "Depth 31-50", "Depth 51-100", "Depth > 100"];
+        for(var i = 0; i< categories.length; i++) {
+            div.innerHTML +=
+                "<i class='circle' style='background:" + colorlist[i] + "'><strong>" + categories[i] +"</strong></i> ";
+        }
+        return div;
+    };
+    legend.addTo(myMap);
 }
 
 //Function to create the earthquake markers
@@ -51,7 +66,7 @@ function createMarkers(response) {
 
     // Function we run once for each feature in the features array to give them popups
     function onEachFeature(feature, layer) {
-        layer.bindPopup(`<h3>${feature.properties.place}</h3><hr><p>${new Date(feature.properties.time)}</p>`);
+        layer.bindPopup(`<h3>${feature.properties.place}</h3><hr><p>${new Date(feature.properties.time)}</p><p>Magnitude: ${feature.properties.mag}</p><p>Depth: ${feature.geometry.coordinates[2]}</p>`);
     }
     
     // Create a GeoJSON layer, and add it to the map using the onEachFeature function once fore each piece of data.
