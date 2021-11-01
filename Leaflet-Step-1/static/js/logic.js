@@ -28,16 +28,38 @@ function createMap(earthquakes) {
 }
 
 //Function to create the earthquake markers
-function createMarkers(response) {
-    // Define a function that we want to run once for each feature in the features array.
-    // Give each feature a popup that describs the place and time of the earthquake.
+function createMarkers(response) {   
+    // Function to change json markers to circle markers
+    function createCircleMarker(feature, latlng ){
+        earthquakeColor = "yellow";
+        if(feature.geometry.coordinates[2] < 11) {earthquakeColor = "yellow";}
+        else if (feature.geometry.coordinates[2] < 31) {earthquakeColor = "greenyellow";}
+        else if (feature.geometry.coordinates[2] < 51) {earthquakeColor = "green";}
+        else if (feature.geometry.coordinates[2] < 101) {earthquakeColor = "darkgreen";}
+        else {earthquakeColor = "darkslategrey";}
+        let options = {
+            radius: (feature.properties.mag * 2),
+            fillColor: earthquakeColor,
+            color: "black",
+            weight: 1,
+            opacity: 1,
+            fillOpacity: .75
+        }
+        return L.circleMarker( latlng, options);
+        //
+    }
+
+    // Function we run once for each feature in the features array to give them popups
     function onEachFeature(feature, layer) {
         layer.bindPopup(`<h3>${feature.properties.place}</h3><hr><p>${new Date(feature.properties.time)}</p>`);
     }
+    
     // Create a GeoJSON layer, and add it to the map using the onEachFeature function once fore each piece of data.
     var earthquakes = L.geoJSON(response, {
+        pointToLayer: createCircleMarker,
         onEachFeature: onEachFeature
     });
+
     // Pass the earthquake data to a createMap() function.
     createMap(earthquakes);
 }
