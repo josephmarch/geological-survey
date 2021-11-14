@@ -13,3 +13,11 @@ static folder, with css and js folders inside, hold the style.css file and the c
 Data pulled from United States Geological Survey (USGS) geojson api. More specifically, earthquake data for the past month.
 https://earthquake.usgs.gov/earthquakes/feed/v1.0/geojson.php
 
+## Tools Used:
+- HTML
+- CSS
+- JavaScript
+- Leaflet
+
+## Contact:
+Joseph March: josephmarch@gmail.com
