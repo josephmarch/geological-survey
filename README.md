@@ -1,10 +1,12 @@
 # geological-survey
-United States Geological Survey Work
+United States Geological Survey data showing earthquakes for the past month.
 
-Folders Leaflet-Step-1 and Leaflet-Step-2 are the same. Both include index.html which can be used to display the website. Both also include a static folder with css and js folders inside that hold the style.css file and the config.js and logic.js files.
+index.html can be used to display the website built by this project, or it can be viewed on github pages here: https://josephmarch.github.io/geological-survey/
+static folder, with css and js folders inside, hold the style.css file and the config.js and logic.js files containing the code needed to pull and provide the data to the website.
 
-The content of Leaflet-Step-1 (which is currently identical to the content of Leaflet-Step-2) was copied to main as well (appearing as index.html and a static folder containing needed css and js data). The reason for this was to allow github pages to run the data from Leaflet-Step-1 as a webpage at the below location.
+## View the Page here: https://josephmarch.github.io/geological-survey/
 
-https://josephmarch.github.io/leaflet-challenge/
+## Data:
+Data pulled from United States Geological Survey (USGS) geojson api. More specifically, earthquake data for the past month.
+https://earthquake.usgs.gov/earthquakes/feed/v1.0/geojson.php
 
-This data shows earthquakes for the past month.
