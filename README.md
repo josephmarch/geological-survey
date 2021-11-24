@@ -7,7 +7,7 @@ static folder, with css and js folders inside, hold the style.css file and the c
 
 ## View the Page here: https://josephmarch.github.io/geological-survey/
 
-![webpagesample](/static/sample.png)
+[![webpagesample](/static/sample.png)](https://josephmarch.github.io/geological-survey/)
 
 ## Data:
 Data pulled from United States Geological Survey (USGS) geojson api. More specifically, earthquake data for the past month.
